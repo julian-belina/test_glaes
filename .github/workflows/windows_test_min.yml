@@ -1,0 +1,33 @@
+name: Run dev installation dep tests for glaes
+
+on: 
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manual run' 
+  push:
+    branches: 
+      - main
+
+
+jobs:
+    TestGLAES:
+        name: Test mamba on Windows ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}  
+        strategy:
+            fail-fast: false
+            matrix:
+                # os: ["ubuntu-latest","ubuntu-20.04", "macos-latest","macos-13","macos-12", "windows-latest","windows-2019"]
+                os: ["windows-latest","windows-2019"]
+                     
+        steps:
+        - uses: conda-incubator/setup-miniconda@v3
+          with:
+           miniforge-version: latest
+           channels: conda-forge
+           # activate-environment: test_env
+        - name: Run tests
+          shell: pwsh
+          run: |
+            mamba create --name win_env pandas
+            echo "done"
