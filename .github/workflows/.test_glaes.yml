@@ -12,13 +12,12 @@ on:
   
 jobs:
     TestGLAES:
-        name: Test (${{ matrix.glaes-version }}, on ${{ matrix.os }} for Glaes)
+        name: Test gdal=(${{ matrix.gdal-version }}, on ${{ matrix.os }} for glaes=${{ matrix.glaes-version }})
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
             matrix:
                 os: ["ubuntu-latest","ubuntu-20.04", "macos-latest","macos-13","macos-12", "macos-11","windows-latest","windows-2019"]
-                # fine-version: ["2.3.4","2.3.3","2.3.2","2.3.1","2.3.0","2.2.3","2.2.2"]
                 glaes-version: ["1.2.1"]
                 gdal-version: ["2.4.0","2.4.1","2.4.2","2.4.3","2.4.4","3.0.1","3.0.2","3.0.3","3.0.4","3.4.0", "3.4.1", "3.4.2", "3.4.3", "3.4.4"]
         steps:
@@ -46,7 +45,7 @@ jobs:
             conda list
             echo "libaries printed"
             ls
-            cd fine
+            cd glaes
             echo "start pytest"
             conda run -n test_env python -m pytest test/
             echo "Pytest done"
