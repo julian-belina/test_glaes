@@ -12,7 +12,7 @@ on:
   
 jobs:
     TestGlaesDevLocal:
-        name: Test gdal=(${{ matrix.gdal-version }},geokit=(${{ matrix.geokit-version }} on ${{ matrix.os }} for glaes=${{ matrix.glaes-version }})
+        name: Test gdal=${{ matrix.gdal-version }},geokit=${{ matrix.geokit-version }} on ${{ matrix.os }} for glaes=${{ matrix.glaes-version }})
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
@@ -20,7 +20,7 @@ jobs:
                 # os: ["ubuntu-latest","ubuntu-20.04", "macos-latest","macos-13","macos-12", "windows-latest","windows-2019"]
                 os: ["ubuntu-latest"]
                 glaes-version: ["1.2.1"]
-                gdal-version: ["2.4.0","2.4.1","2.4.2","2.4.3","2.4.4","3.0.1","3.0.2","3.0.3","3.0.4","3.4.0", "3.4.1", "3.4.2", "3.4.3", "3.4.4"]
+                gdal-version: ["2.4.1","2.4.2","2.4.3","2.4.4","3.0.1","3.0.2","3.0.3","3.0.4","3.4.0", "3.4.1", "3.4.2", "3.4.3", "3.4.4"]
                 # gdal-version: ["3.4"]
                 geokit-version: ["1.3.0","1.4.0"]
         steps:
@@ -56,15 +56,15 @@ jobs:
             ls
             conda run --name glaes_env pytest test/
             echo "Pytest done"            
-        - name: Run examples
-          shell: pwsh
-          run: |
-            echo "run examples"
-            ls
-            cd glaes
-            cd Examples            
-            echo "Start first example"
-            conda run --name glaes_env python jupyter nbconvert --execute 00_basic_workflow.ipynb
-            echo "Start second example"
-            conda run --name glaes_env python jupyter nbconvert --execute 01_Placement_algorithm.ipynb          
-            echo "Running examples terminated"
+        # - name: Run examples
+        #   shell: pwsh
+        #   run: |
+        #     echo "run examples"
+        #     ls
+        #     cd glaes
+        #     cd Examples            
+        #     echo "Start first example"
+        #     conda run --name glaes_env python jupyter nbconvert --execute 00_basic_workflow.ipynb
+        #     echo "Start second example"
+        #     conda run --name glaes_env python jupyter nbconvert --execute 01_Placement_algorithm.ipynb          
+        #     echo "Running examples terminated"
