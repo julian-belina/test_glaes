@@ -43,7 +43,7 @@ jobs:
             ls
             echo "LS Done"
             cd glaes
-            mamba create --name glaes_env gdal=(${{ matrix.gdal-version }} python pytest pytest-cov pylint autopep8 jupyter notebook jupyterlab pip matplotlib descartes pandas numpy<=1.23.1 scipy scikit-learn
+            mamba create --name glaes_env gdal=(${{ matrix.gdal-version }} geokit=(${{ matrix.geokit-version }} python pytest pytest-cov pylint autopep8 jupyter notebook jupyterlab pip matplotlib descartes pandas numpy<=1.23.1 scipy scikit-learn
             # mamba env update --name glaes_env --yes --file requirements-dev.yml
             conda run --name glaes_env pip install . --no-deps
             echo "Installation done"
