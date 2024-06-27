@@ -12,7 +12,7 @@ on:
   
 jobs:
     TestGLAES:
-        name: Test (${{ matrix.glaes-version }}, on ${{ matrix.os }} for Fine)
+        name: Test (${{ matrix.glaes-version }}, on ${{ matrix.os }} for Glaes)
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
@@ -35,7 +35,7 @@ jobs:
             channels: conda-forge
             activate-environment: test_env
         - name: Run tests
-          shell: push
+          shell: pwsh
           run: |
             ls
             echo "LS Done"
