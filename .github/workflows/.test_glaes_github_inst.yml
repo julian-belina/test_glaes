@@ -17,8 +17,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                # os: ["ubuntu-latest","ubuntu-20.04", "macos-latest","macos-13","macos-12", "windows-latest","windows-2019"]
-                os: ["ubuntu-latest"]
+                os: ["ubuntu-latest","ubuntu-20.04", "macos-latest","macos-13","macos-12", "windows-latest","windows-2019"]
+                # os: ["ubuntu-latest"]
                 glaes-version: ["1.2.1"]
                 gdal-version: ["2.4.1","2.4.2","2.4.3","2.4.4"]
                 # gdal-version: ["3.4"]
