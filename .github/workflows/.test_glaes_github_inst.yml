@@ -1,4 +1,4 @@
-name: Run dependency checks for glaes
+name: Run dev installation dep tests for glaes
 
 on: 
   workflow_dispatch:
@@ -51,30 +51,17 @@ jobs:
             cd glaes
             echo "start pytest"
             ls
-            conda run --name glaes_env pytest
-            echo "Pytest done"
+            conda run --name glaes_env pytest test/
+            echo "Pytest done"            
+        - name: Run examples
+          shell: pwsh
+          run: |
             echo "run examples"
-        # - name: Run examples
-        #   shell: pwsh
-        #   run: |
-        #     ls
-        #     cd ETHOS_PENALPS
-        #     cd examples
-        #     cd tutorial
-        #     conda run --name glaes_env python _1_cooking_example.py
-        #     conda run --name glaes_env python _2_cooking_example_more_states.py
-        #     conda run --name glaes_env python _3_add_more_cooker_for_parallel_operation.py
-        #     conda run --name glaes_env python _4_cooking_and_mixer_exclusive_example.py
-        #     cd _5_connect_four_process_steps
-        #     conda run --name glaes_env python simulation_starter.py
-        #     cd ..
-        #     cd ..
-        #     cd toffee_production
-        #     conda run --name glaes_env python simulation_starter.py
-        #     cd ..
-        #     cd basic_examples
-        #     conda run --name glaes_env python batch_to_batch_1_node_example.py
-        #     cd ..
-        #     cd b_pillar_manufacturing
-        #     conda run --name glaes_env python simulation_starter.py
-        #     echo "Running examples terminated"
+            ls
+            cd glaes
+            cd Examples            
+            echo "Start first example"
+            conda run --name glaes_env python jupyter nbconvert --execute 00_basic_workflow.ipynb
+            echo "Start second example"
+            conda run --name glaes_env python jupyter nbconvert --execute 01_Placement_algorithm.ipynb          
+            echo "Running examples terminated"
