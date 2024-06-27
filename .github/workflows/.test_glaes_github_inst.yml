@@ -41,7 +41,7 @@ jobs:
             ls
             echo "LS Done"
             cd glaes
-            mamba env create --name glaes_env --yes --file requirements.yml
+            mamba env create --name glaes_env --yes --file requirements-dev.yml
             conda run --name glaes_env pip install . --no-deps
             echo "Installation done"
             conda list --name glaes_env
