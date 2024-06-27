@@ -5,9 +5,9 @@ on:
     inputs:
       tags:
         description: 'Manual run' 
-  push:
-    branches: 
-      - main
+  # push:
+  #   branches: 
+  #     - main
 
   
 jobs:

@@ -5,9 +5,9 @@ on:
     inputs:
       tags:
         description: 'Manual run' 
-  push:
-    branches: 
-      - main
+#   push:
+#     branches: 
+#       - main
 
   
 jobs:
@@ -28,7 +28,8 @@ jobs:
           with:
             repository: FZJ-IEK3-VSA/glaes
             path: './glaes'  
-            ref: main
+            ref: v${{ matrix.glaes-version }}
+            fetch-depth: 0
         - uses: conda-incubator/setup-miniconda@v3
           with:
             miniforge-version: latest
@@ -40,7 +41,7 @@ jobs:
             ls
             echo "LS Done"
             cd glaes
-            mamba env create --name glaes_env --yes --file environment.yml
+            mamba env create --name glaes_env --yes --file requirements.yml
             conda run --name glaes_env pip install . --no-deps
             echo "Installation done"
             conda list --name glaes_env
