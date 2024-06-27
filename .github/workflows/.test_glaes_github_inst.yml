@@ -12,7 +12,7 @@ on:
   
 jobs:
     TestGlaesDevLocal:
-        name: Test gdal=(${{ matrix.gdal-version }}, on ${{ matrix.os }} for glaes=${{ matrix.glaes-version }})
+        name: Test gdal=(${{ matrix.gdal-version }},geokit=(${{ matrix.geokit-version }} on ${{ matrix.os }} for glaes=${{ matrix.glaes-version }})
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
@@ -21,14 +21,16 @@ jobs:
                 os: ["ubuntu-latest"]
                 glaes-version: ["1.2.1"]
                 # gdal-version: ["2.4.0","2.4.1","2.4.2","2.4.3","2.4.4","3.0.1","3.0.2","3.0.3","3.0.4","3.4.0", "3.4.1", "3.4.2", "3.4.3", "3.4.4"]
-                gdal-version: ["2.4.1"]
+                gdal-version: ["3.4"]
+                geokit-version: ["1.4.0"]
         steps:
         - name: Checkout
           uses: actions/checkout@v4
           with:
             repository: FZJ-IEK3-VSA/glaes
             path: './glaes'  
-            ref: v${{ matrix.glaes-version }}
+            # ref: v${{ matrix.glaes-version }}
+            ref: test-geotkit-version
             fetch-depth: 0
         - uses: conda-incubator/setup-miniconda@v3
           with:
