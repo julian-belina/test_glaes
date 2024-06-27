@@ -36,13 +36,15 @@ jobs:
           with:
             miniforge-version: latest
             channels: conda-forge
-            activate-environment: test_env
+            # activate-environment: test_env
         - name: Run tests
           shell: pwsh
           run: |
             ls
             echo "LS Done"
             cd glaes
+            mamba deactivate
+            mamba deactivate
             mamba create --name glaes_env --yes gdal=${{ matrix.gdal-version }} geokit=${{ matrix.geokit-version }} python pytest pytest-cov pylint autopep8 jupyter notebook jupyterlab pip matplotlib descartes pandas numpy<1.24 scipy scikit-learn
             conda run --name glaes_env pip install . --no-deps
             echo "Installation done"
