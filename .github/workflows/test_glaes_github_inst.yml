@@ -41,30 +41,28 @@ jobs:
         - name: Run tests
           shell: pwsh
           run: |
-            mamba create --name win_env pandas
-            echo "done"
-            # ls
-            # echo "LS Done"
-            # cd glaes
-            # echo "Cd in to glaes done"
-            # ls
-            # echo "ls again"
-            # mamba deactivate
-            # mamba deactivate
-            # echo "mamba deactivate done"
-            # mamba create --name glaes_env --yes gdal=${{ matrix.gdal-version }} geokit=${{ matrix.geokit-version }} python pytest pytest-cov pylint autopep8 jupyter notebook jupyterlab pip matplotlib descartes pandas numpy<1.24 scipy scikit-learn
-            # echo "mamba create done"
-            # conda run --name glaes_env pip install . --no-deps
-            # echo "Installation done"
-            # conda list --name glaes_env
-            # echo "libaries printed"
-            # echo "change directory to test"
-            # ls
-            # cd glaes
-            # echo "start pytest"
-            # ls
-            # conda run --name glaes_env pytest test/
-            # echo "Pytest done"            
+            ls
+            echo "LS Done"
+            cd glaes
+            echo "Cd in to glaes done"
+            ls
+            echo "ls again"
+            mamba deactivate
+            mamba deactivate
+            echo "mamba deactivate done"
+            mamba create --name glaes_env --yes gdal=${{ matrix.gdal-version }} geokit=${{ matrix.geokit-version }} python pytest pytest-cov pylint autopep8 jupyter notebook jupyterlab pip matplotlib descartes pandas numpy=1.23.5 scipy scikit-learn
+            echo "mamba create done"
+            conda run --name glaes_env pip install . --no-deps
+            echo "Installation done"
+            conda list --name glaes_env
+            echo "libaries printed"
+            echo "change directory to test"
+            ls
+            cd glaes
+            echo "start pytest"
+            ls
+            conda run --name glaes_env pytest test/
+            echo "Pytest done"            
         # - name: Run examples
         #   shell: pwsh
         #   run: |

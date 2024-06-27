@@ -1,13 +1,13 @@
-name: Run dev installation dep tests for glaes
+name: Run windows min example
 
 on: 
   workflow_dispatch:
     inputs:
       tags:
         description: 'Manual run' 
-  push:
-    branches: 
-      - main
+  # push:
+  #   branches: 
+  #     - main
 
 
 jobs:
